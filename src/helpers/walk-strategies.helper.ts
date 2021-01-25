@@ -14,13 +14,13 @@ function depthFirstPreOrder(callback: (node: Node) => boolean, node: Node): bool
             }
         }
     }
-    
+
     return going;
-};
+}
 
 function depthFirstPostOrder(callback: (node: Node) => boolean, node: Node) {
     let i;
-    const childCount = Array.isArray(node.children) ? node.children.length: 0;
+    const childCount = Array.isArray(node.children) ? node.children.length : 0;
     let going;
     for (i = 0; i < childCount; i++) {
         const item = node.children[i];
@@ -33,7 +33,7 @@ function depthFirstPostOrder(callback: (node: Node) => boolean, node: Node) {
     }
     going = callback(node);
     return going;
-};
+}
 
 function breadthFirst(callback: (node: Node) => boolean, node: Node) {
     const queue = [node];
@@ -57,10 +57,10 @@ function breadthFirst(callback: (node: Node) => boolean, node: Node) {
             }
         }
     })();
-};
+}
 
 export default {
     pre: depthFirstPreOrder,
     post: depthFirstPostOrder,
-    breadth: breadthFirst
+    breadth: breadthFirst,
 };

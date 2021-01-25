@@ -1,7 +1,7 @@
 import addChild from '../helpers/add-child.helper';
 import hasComparatorFunction from '../helpers/has-comparator-function.helpers';
 import walkStrategies from '../helpers/walk-strategies.helper';
-const strategies: {[index: string]:any} = walkStrategies;
+const strategies: { [index: string]: any } = walkStrategies;
 export default class Node {
     public config: any;
     public model: any;
@@ -16,15 +16,15 @@ export default class Node {
 
     public isRoot(): boolean {
         return typeof this.parent === 'undefined' || this.parent === null;
-    };
+    }
 
     public hasChildren(): boolean {
         return Array.isArray(this.children) && this.children.length > 0;
-    };
+    }
 
     public addChild(child: Node) {
         return addChild(this, child);
-    };
+    }
 
     public addChildAtIndex(child: Node, index: number) {
         if (hasComparatorFunction(this)) {
@@ -32,7 +32,7 @@ export default class Node {
         }
 
         return addChild(this, child, index);
-    };
+    }
 
     public setIndex(index: number) {
         if (hasComparatorFunction(this)) {
@@ -49,7 +49,7 @@ export default class Node {
             if (index < 0 || index >= this.parent.children.length) {
                 throw new Error('Invalid index.');
             }
-    
+
             const oldIndex = this.parent.children.indexOf(this);
             const item = this.parent.children.splice(oldIndex, 1)[0];
             if (typeof item !== 'undefined') {
@@ -57,12 +57,12 @@ export default class Node {
                 this.parent.model[this.parent.config.childrenName].splice(
                     index,
                     0,
-                    this.parent.model[this.parent.config.childrenName].splice(oldIndex, 1)[0]
+                    this.parent.model[this.parent.config.childrenName].splice(oldIndex, 1)[0],
                 );
             }
         }
         return this;
-    };
+    }
 
     public getPath() {
         const path = [];
@@ -73,60 +73,54 @@ export default class Node {
             }
         })(this);
         return path;
-    };
+    }
 
     public getIndex() {
         if (this.isRoot() || this.parent === null) {
             return 0;
         }
         return this.parent.children.indexOf(this);
-    };
+    }
 
     public walk(callback: (node: Node) => boolean, type: string = 'pre') {
         const strategy = strategies[type];
         if (strategy) {
             strategy(callback, this);
         }
-    };
+    }
 
     public all(callback: (node: Node) => boolean, type: string = 'pre'): Node[] {
         const all: Node[] = [];
         const strategy = strategies[type];
         if (strategy) {
-            strategy(
-                (node: Node) => {
-                    const check = callback(node);
-                    if (check) {
-                        all.push(node);
-                    }
-                    return true;
-                },
-                this
-            );
+            strategy((node: Node) => {
+                const check = callback(node);
+                if (check) {
+                    all.push(node);
+                }
+                return true;
+            }, this);
             return all;
         } else {
             return [];
         }
-    };
+    }
 
     public first(callback: (node: Node) => boolean, type: string = 'pre'): Node | null {
         let first: null | Node = null;
         const strategy = strategies[type];
         if (strategy) {
-            strategy(
-                (node: Node) => {
-                    const check = callback(node) && !first;
-                    if (check) {
-                        first = node;
-                        return false;
-                    }
-                    return true;
-                },
-                this
-            );
+            strategy((node: Node) => {
+                const check = callback(node) && !first;
+                if (check) {
+                    first = node;
+                    return false;
+                }
+                return true;
+            }, this);
         }
         return first;
-    };
+    }
 
     public drop() {
         let indexOfChild;
@@ -137,5 +131,5 @@ export default class Node {
             this.parent = null;
         }
         return this;
-    };
+    }
 }

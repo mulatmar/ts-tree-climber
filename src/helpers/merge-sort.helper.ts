@@ -1,6 +1,6 @@
 export default function mergeSort(comparatorFn: (arrFirst: any[], arrSecond: any[]) => number, array: any[]): any[] {
     const length = array.length;
-    let firstHalf
+    let firstHalf;
     let secondHalf;
     if (length >= 2) {
         firstHalf = array.slice(0, length / 2);
@@ -11,7 +11,11 @@ export default function mergeSort(comparatorFn: (arrFirst: any[], arrSecond: any
     }
 }
 
-function merge(comparatorFn: (arrFirst: any[], arrSecond: any[]) => number, arrayFirst: any[], arraySecond: any[]): any[] {
+function merge(
+    comparatorFn: (arrFirst: any[], arrSecond: any[]) => number,
+    arrayFirst: any[],
+    arraySecond: any[],
+): any[] {
     const result = [];
     let leftFirst = arrayFirst.length;
     let leftSecond = arraySecond.length;

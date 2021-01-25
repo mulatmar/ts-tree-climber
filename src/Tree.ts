@@ -5,10 +5,13 @@ import addChildToNode from './helpers/add-child-to-node.helper';
 export default class Tree {
     private config: IConfigTree;
     constructor(config: IConfigTree | null) {
-        this.config = config !== null ? config : {
-            childrenName: 'children',
-            modelComparatorFn: null
-        };
+        this.config =
+            config !== null
+                ? config
+                : {
+                      childrenName: 'children',
+                      modelComparatorFn: null,
+                  };
     }
 
     public parse(model: any) {
@@ -21,7 +24,7 @@ export default class Tree {
             if (this.config.modelComparatorFn) {
                 model[this.config.childrenName] = mergeSort(
                     this.config.modelComparatorFn,
-                    model[this.config.childrenName]
+                    model[this.config.childrenName],
                 );
             }
             for (i = 0, childCount = model[this.config.childrenName].length; i < childCount; i++) {
@@ -29,5 +32,5 @@ export default class Tree {
             }
         }
         return node;
-    };
+    }
 }

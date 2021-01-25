@@ -10,11 +10,7 @@ export default function addChild(self: Node, child: Node, insertIndex?: number) 
     }
 
     if (hasComparatorFunction(self)) {
-        index = findInsertIndex(
-            self.config.modelComparatorFn,
-            self.model[self.config.childrenName],
-            child.model
-        );
+        index = findInsertIndex(self.config.modelComparatorFn, self.model[self.config.childrenName], child.model);
 
         self.model[self.config.childrenPropertyName].splice(index, 0, child.model);
 
