@@ -1,7 +1,7 @@
 import Tree from './Tree';
 import Node from './nodes/Node';
 
-export default {
+export {
     Tree,
     Node,
 };
