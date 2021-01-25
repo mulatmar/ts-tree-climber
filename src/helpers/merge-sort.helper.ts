@@ -12,7 +12,7 @@ export default function mergeSort(comparatorFn: (arrFirst: any[], arrSecond: any
 }
 
 function merge(comparatorFn: (arrFirst: any[], arrSecond: any[]) => number, arrayFirst: any[], arraySecond: any[]): any[] {
-    let result = [];
+    const result = [];
     let leftFirst = arrayFirst.length;
     let leftSecond = arraySecond.length;
     while (leftFirst > 0 && leftSecond > 0) {

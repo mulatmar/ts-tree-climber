@@ -1,7 +1,7 @@
 import Node from '../nodes/Node';
 function depthFirstPreOrder(callback: (node: Node) => boolean, node: Node): boolean {
     let i;
-    let childCount = Array.isArray(node.children) ? node.children.length : 0;
+    const childCount = Array.isArray(node.children) ? node.children.length : 0;
     let going = callback(node);
     if (going === false) {
         return false;

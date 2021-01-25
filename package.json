@@ -5,7 +5,9 @@
     "main": "index.ts",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "build": "webpack"
+        "build": "webpack",
+        "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+        "lint": "tslint -p tsconfig.json"
     },
     "keywords": [
         "tree",
@@ -20,7 +22,10 @@
     "repository": "https://github.com/mulatmar/ts-tree-climber",
     "bugs": "https://github.com/mulatmar/ts-tree-climber/issues",
     "devDependencies": {
+        "prettier": "^2.2.1",
         "ts-loader": "^8.0.14",
+        "tslint": "^6.1.3",
+        "tslint-config-prettier": "^1.18.0",
         "typescript": "^4.1.3",
         "webpack": "^5.17.0",
         "webpack-cli": "^4.4.0"

@@ -65,7 +65,7 @@ export default class Node {
     };
 
     public getPath() {
-        var path = [];
+        const path = [];
         (function addToPath(node: Node) {
             path.unshift(node);
             if (!node.isRoot() && node.parent) {
@@ -129,7 +129,7 @@ export default class Node {
     };
 
     public drop() {
-        var indexOfChild;
+        let indexOfChild;
         if (!this.isRoot() && this.parent) {
             indexOfChild = this.parent.children.indexOf(this);
             this.parent.children.splice(indexOfChild, 1);
