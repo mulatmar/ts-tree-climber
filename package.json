@@ -17,6 +17,8 @@
     ],
     "author": "Andrei Ksianzou",
     "license": "MIT",
+    "repository": "https://github.com/mulatmar/ts-tree-climber",
+    "bugs": "https://github.com/mulatmar/ts-tree-climber/issues",
     "devDependencies": {
         "ts-loader": "^8.0.14",
         "typescript": "^4.1.3",
