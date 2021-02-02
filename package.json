@@ -1,6 +1,6 @@
 {
     "name": "ts-tree-climber",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": "Manage and navigate tree structures in TypeScript (JavaScript).",
     "main": "lib/index.js",
     "types": "lib/index.d.ts",
