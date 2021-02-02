@@ -12,18 +12,18 @@ export default function addChild(self: Node, child: Node, insertIndex?: number) 
     if (hasComparatorFunction(self)) {
         index = findInsertIndex(self.config.modelComparatorFn, self.model[self.config.childrenName], child.model);
 
-        self.model[self.config.childrenPropertyName].splice(index, 0, child.model);
+        self.model[self.config.childrenName].splice(index, 0, child.model);
 
         self.children.splice(index, 0, child);
     } else {
         if (typeof insertIndex === 'undefined') {
-            self.model[self.config.childrenPropertyName].push(child.model);
+            self.model[self.config.childrenName].push(child.model);
             self.children.push(child);
         } else {
             if (insertIndex < 0 || insertIndex > self.children.length) {
                 throw new Error('Invalid index.');
             }
-            self.model[self.config.childrenPropertyName].splice(insertIndex, 0, child.model);
+            self.model[self.config.childrenName].splice(insertIndex, 0, child.model);
             self.children.splice(insertIndex, 0, child);
         }
     }
